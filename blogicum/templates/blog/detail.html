@@ -1,23 +1,23 @@
 {% extends "base.html" %}
 {% block title %}
-  {{ blog.location }}. {{ blog.date }}
+  {{ post.location }}. {{ post.date }}
 {% endblock %}
 {% block content %}
   <hr>
   <article>
     <ul>
       <li>
-        {{ blog.location }}
+        Место: {{ post.location }}
       </li>
       <li>
-        {{ blog.date }}
+        Дата: {{ post.date }}
       </li>
       <li>
         Категория: <a href="not-my-day">not-my-day</a>
       </li>
     </ul>
     <p>
-      {{ blog.text }}
+      {{ post.text }}
     </p>
   </article>
 {% endblock %}
