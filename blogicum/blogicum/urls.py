@@ -31,11 +31,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 
+
 urlpatterns = [
-    path('', include('blog.urls', namespace='index')),
-    path('posts/', include('blog.urls', namespace='detail')),
-    path('category/', include('blog.urls', namespace='category')),
-    path('pages/about/', include('pages.urls', namespace='about')),
-    path('pages/rules/', include('pages.urls', namespace='rules')),
+    path('', include('blog.urls', namespace='blog')),
+    path('', include('pages.urls', namespace='pages')),
     path('admin/', admin.site.urls),
 ]
