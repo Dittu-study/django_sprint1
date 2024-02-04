@@ -33,7 +33,7 @@ from django.urls import include, path
 
 
 urlpatterns = [
-    path('', include('blog.urls', namespace='blog')),
-    path('', include('pages.urls', namespace='pages')),
+    path('', include('blog.urls')),
+    path('', include('pages.urls')),
     path('admin/', admin.site.urls),
 ]

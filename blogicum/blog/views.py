@@ -46,13 +46,13 @@ posts = [
 
 def index(request):
     template = 'blog/index.html'
-    context = {'index': posts}
+    context = {'posts': posts}
     return render(request, template, context)
 
 
 def post_detail(request, post_id):
     template = 'blog/detail.html'
-    context = {'post': posts[post_id]}
+    context = {'posts': posts[post_id]}
     return render(request, template, context)
 
 
