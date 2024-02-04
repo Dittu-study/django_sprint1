@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import Http404
 
 posts = [
     {
@@ -46,14 +47,16 @@ posts = [
 
 def index(request):
     template = 'blog/index.html'
-    context = {'posts': reversed(posts)}
+    context = {'post': reversed(posts)}
     return render(request, template, context)
 
 
 def post_detail(request, id):
     template = 'blog/detail.html'
-    if posts:
-        context = {'posts': posts[id]}
+    if not posts:
+        raise Http404("dict is empty")
+    else:
+        context = {'post': posts[id]}
     return render(request, template, context)
 
 
