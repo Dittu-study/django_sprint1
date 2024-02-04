@@ -54,7 +54,7 @@ def index(request):
 def post_detail(request, id):
     template = 'blog/detail.html'
     if not posts:
-        raise Http404("dict is empty")
+        raise Http404("list is empty")
     else:
         context = {'post': posts[id]}
     return render(request, template, context)
