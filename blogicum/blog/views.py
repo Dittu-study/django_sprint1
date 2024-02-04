@@ -42,7 +42,7 @@ posts = [
                 Весь этот день я хлопотал  около вещей: укрывал и
                 укутывал их, чтобы не испортились от дождя.''',
     },
-] 
+]
 
 
 def index(request):
@@ -62,5 +62,5 @@ def post_detail(request, id):
 
 def category_posts(request, category_slug):
     template = 'blog/category.html'
-    context =  {'slug': category_slug}
+    context = {'slug': category_slug}
     return render(request, template, context)
