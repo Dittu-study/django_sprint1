@@ -44,6 +44,9 @@ posts = [
     },
 ]
 
+dict_posts = {
+    post_id['id']: post_id for post_id in posts
+}
 
 def index(request):
     template = 'blog/index.html'
@@ -51,12 +54,21 @@ def index(request):
     return render(request, template, context)
 
 
+# def post_detail(request, id):
+#     template = 'blog/detail.html'
+#     if not posts:
+#         raise Http404("list is empty")
+#     else:
+#         context = {'post': posts[id]}
+#     return render(request, template, context)
+
+
 def post_detail(request, id):
     template = 'blog/detail.html'
-    if not posts:
+    if id not in dict_posts.keys():
         raise Http404("list is empty")
     else:
-        context = {'post': posts[id]}
+        context = {'post': dict_posts[id]}
     return render(request, template, context)
 
 
