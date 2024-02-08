@@ -42,20 +42,20 @@
 <article>
   <ul>
     <li>
-      Место: {{ item.location }}
+      Место: {{ post.location }}
     </li>
     <li>
-      Дата: {{ item.date }}
+      Дата: {{ post.date }}
     </li>
     <li>
-      Категория: <a href="{% url 'blog:category_posts' item.category %}">{{ item.category }}</a>
+      Категория: <a href="{% url 'blog:category_posts' post.category %}">{{ post.category }}</a>
     </li>
   </ul>
   <p>
   {% if view_name == 'blog:index' %}
-    {{ item.text|truncatewords:10 }}
+    {{ post.text|truncatewords:10 }}
   </p>
-  <a href="{% url 'blog:post_detail' item.id %}">Читать полный текст</a>
+  <a href="{% url 'blog:post_detail' post.id %}">Читать полный текст</a>
 </article>
 {% endif %}
   {% if view_name == 'blog:post_detail' %}

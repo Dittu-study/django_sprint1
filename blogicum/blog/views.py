@@ -51,7 +51,7 @@ dict_posts = {
 
 def index(request):
     template = 'blog/index.html'
-    context = {'post': reversed(posts)}
+    context = {'posts': reversed(posts)}
     return render(request, template, context)
 
 
