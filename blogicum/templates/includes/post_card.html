@@ -1,26 +1,23 @@
-{% if template == 'blog/index.html' %}
-  <h1>Лента записей</h1>
-    {% for item in post %}
-    <hr>
-    <article>
-      <ul>
-        <li>
-          Место: {{ item.location }}
-        </li>
-        <li>
-          Дата: {{ item.date }}
-        </li>
-        <li>
-          Категория: <a href="{% url 'blog:category_posts' item.category %}">{{ item.category }}</a>
-        </li>
-      </ul>
-      <p>
-        {{ item.text|truncatewords:10 }}
-      </p>
-      <a href="{% url 'blog:post_detail' item.id %}">Читать полный текст</a>
-    </article>
-    {% endfor %}
-{% elif template == 'blog/detail.html' %}
+{% comment %} {% if request.resolver_match.view_name  == 'blog:index' %}
+  <hr>
+  <article>
+    <ul>
+      <li>
+        Место: {{ item.location }}
+      </li>
+      <li>
+        Дата: {{ item.date }}
+      </li>
+      <li>
+        Категория: <a href="{% url 'blog:category_posts' item.category %}">{{ item.category }}</a>
+      </li>
+    </ul>
+    <p>
+      {{ item.text|truncatewords:10 }}
+    </p>
+    <a href="{% url 'blog:post_detail' item.id %}">Читать полный текст</a>
+  </article>
+{% elif request.resolver_match.view_name  == 'blog:post_detail' %}
   <hr>
   <article>
     <ul>
@@ -38,4 +35,32 @@
       {{ post.text }}
     </p>
   </article>
+{% endif %} {% endcomment %}
+
+{% with request.resolver_match.view_name as view_name %}
+<hr>
+<article>
+  <ul>
+    <li>
+      Место: {{ item.location }}
+    </li>
+    <li>
+      Дата: {{ item.date }}
+    </li>
+    <li>
+      Категория: <a href="{% url 'blog:category_posts' item.category %}">{{ item.category }}</a>
+    </li>
+  </ul>
+  <p>
+  {% if view_name == 'blog:index' %}
+    {{ item.text|truncatewords:10 }}
+  </p>
+  <a href="{% url 'blog:post_detail' item.id %}">Читать полный текст</a>
+</article>
 {% endif %}
+  {% if view_name == 'blog:post_detail' %}
+    {{ post.text }}
+  </p>
+</article>
+{% endif %}
+{% endwith %}
