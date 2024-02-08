@@ -2,4 +2,6 @@
 {% block title %}
   {{ post.location }}. {{ post.date }}
 {% endblock %}
-{% include "includes/post_card.html" %}
+{% block content %}
+  {% include "includes/post_card.html" %}
+{% endblock %}
